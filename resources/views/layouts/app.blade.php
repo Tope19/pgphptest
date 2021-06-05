@@ -10,7 +10,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>User Card - {{ $user->name }}</title>
+
 
 
     <!-- Fonts -->
@@ -20,6 +20,11 @@
 </head>
 <body class="is-preload">
     <div id="wrapper">
+        @guest
+            @else
+            <a href="{{ route('logout') }}">Logout</a>
+        @endguest
+
         <section id="main">
             @yield('content')
         </section>
@@ -28,6 +33,8 @@
                 <li>&copy; Pictureworks</li>
             </ul>
         </footer>
+
+
     </div>
     <script>
         if ('addEventListener' in window) {

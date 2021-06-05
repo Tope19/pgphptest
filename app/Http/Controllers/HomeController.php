@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Session;
 
 class HomeController extends Controller
 {
@@ -26,5 +27,10 @@ class HomeController extends Controller
     {
         $user = auth()->user();
         return view('home', compact('user'));
+    }
+
+    public function logout(){
+        Session::flush();
+        return redirect()->route('login');
     }
 }
